@@ -12,5 +12,5 @@ Their associations have been worked out and two methods exist:
 * Artist.recorded_songs
 * Band.repeat_recorders
 
-    = ...enjoy!
+=...enjoy!
 
