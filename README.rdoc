@@ -1,16 +1,10 @@
-== Welcome to Assessment04
-
-I've created four models and the accompanying SQLite3 database.
+== Welcome to the Bands and Artists Pages
+I've created four models and the controllers and views to manage their CRUD actions.
 
 * Artist
 * Song
 * Recording
 * Band
-
-Their associations have been worked out and two methods exist:
-
-* Artist.recorded_songs
-* Band.repeat_recorders
 
 ===...enjoy!
 
