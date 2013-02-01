@@ -9,3 +9,6 @@ I've created four models and the controllers and views to manage their CRUD acti
 
 ===...enjoy!
 
+
+>> TODO
+* Allow linking Artists with bands with songs via the UI
