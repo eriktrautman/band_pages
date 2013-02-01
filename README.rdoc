@@ -1,4 +1,5 @@
 == Welcome to the Bands and Artists Pages
+
 I've created four models and the controllers and views to manage their CRUD actions.
 
 * Artist
