@@ -1,6 +1,6 @@
 class Band < ActiveRecord::Base
 
-	attr_accessible :name
+	attr_accessible :name, :photo
 	validates :name, :presence => true, :uniqueness => true
 
 	has_many :artists

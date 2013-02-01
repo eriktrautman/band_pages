@@ -9,7 +9,10 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.new(params[:band])
+     photo_blob = params[:band].delete(:photo).read
+     @band = Band.new(params[:band])
+     @band.photo = photo_blob
+
     if @band.save
       redirect_to @band, :notice => "Congratulations on forming your band!"
     else
@@ -27,8 +30,11 @@ class BandsController < ApplicationController
   end
 
   def update
+    photo_blob = params[:band].delete(:photo).read
     @band = Band.find(params[:id])
     @band.update_attributes(params[:band])
+    @band.photo = photo_blob
+
     if @band.save
       redirect_to @band, :notice => "You've successfully updated your band info"
     else
@@ -37,5 +43,9 @@ class BandsController < ApplicationController
     end
   end
 
+  def photo
+    @band = Band.find(params[:id])
+    send_data @band.photo, :type => 'image/jpg'
+  end
 
 end
