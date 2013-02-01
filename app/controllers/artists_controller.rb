@@ -16,14 +16,11 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist_alias = params[:alias] unless params[:alias].blank?
-    @artist = Artist.new(
-        :first_name => params[:first_name],
-        :last_name => params[:last_name],
-        :alias => artist_alias )
+    @artist = Artist.new(params[:artist])
     if @artist.save
-      redirect_to @artist
+      redirect_to @artist, :notice => "Congratulations on your new Artist page!"
     else
+      flash[:error] = @artist.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -34,14 +31,12 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    params[:alias].blank? ? artist_alias = nil : artist_alias = params[:alias]
-    @artist.first_name = params[:first_name]
-    @artist.last_name = params[:last_name]
-    @artist.alias = artist_alias
+    @artist.update_attributes(params[:artist])
 
     if @artist.save
-      redirect_to @artist
+      redirect_to @artist, :notice => "You've successfully updated your artist information"
     else
+      flash[:error] = @artist.errors.full_messages.to_sentence
       render :edit
     end
   end

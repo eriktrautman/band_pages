@@ -9,10 +9,11 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.new(:name => params[:name])
+    @band = Band.new(params[:band])
     if @band.save
-      redirect_to @band
+      redirect_to @band, :notice => "Congratulations on forming your band!"
     else
+      flash[:error] = @band.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -21,6 +22,20 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
   end
 
+  def edit
+    @band = Band.find(params[:id])
+  end
+
+  def update
+    @band = Band.find(params[:id])
+    @band.update_attributes(params[:band])
+    if @band.save
+      redirect_to @band, :notice => "You've successfully updated your band info"
+    else
+      flash[:error] = @band.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
 
 
 end
