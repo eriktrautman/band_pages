@@ -1,0 +1,9 @@
+<hr />
+<h3>Tracks Recorded:</h3>
+<ul>
+  <% @band.recordings.each do |recording| %>
+    <li>
+      <%= link_to recording.song.name, recording.song %>
+    </li>
+  <% end %>
+</ul>

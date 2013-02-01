@@ -1,0 +1,14 @@
+<%= render "shared/nav_links" %>
+
+<h1>Welcome to the Artists page!</h1>
+
+<h4>Create a new Artist page <%= link_to "HERE", new_artist_path %></h4>
+
+<ul>
+  <% @artists.each do |artist| %>
+    <li>
+      <% artist.alias.nil? ? aka = "" : aka = ", aka '#{artist.alias}'" %>
+      <%= link_to "#{artist.first_name} #{artist.last_name}#{aka}", artist %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,10 @@
+<h3>Create a new Band:</h3>
+<%= render "shared/nav_links" %>
+
+<%= form_tag("/bands", :method => :post) do %>
+  <br />
+  <%= label_tag(:name, "Band Name: ") %>
+  <%= text_field_tag(:name) %>
+  <br />
+  <%= submit_tag("Create Band") %>
+<% end %>

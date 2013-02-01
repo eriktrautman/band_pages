@@ -1,7 +1,9 @@
 class CreateArtist < ActiveRecord::Migration
   def up
   	create_table :artist do |t|
-  		t.string :name
+  		t.string :first_name
+      t.string :last_name
+      t.string :alias
 
   		t.timestamps
   	end

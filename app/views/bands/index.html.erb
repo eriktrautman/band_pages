@@ -1,0 +1,11 @@
+<h2>Welcome to the Bands page!</h2>
+
+<h4>Create a new Band page <%= link_to "HERE", new_band_path %></h4>
+
+<ul>
+  <% @bands.each do |band| %>
+    <li>
+      <%= link_to "#{band.name}", band %>
+    </li>
+  <% end %>
+</ul>

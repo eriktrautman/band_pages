@@ -1,0 +1,23 @@
+<% if @artist.id.nil? %>
+  <% verb = "Create" %>
+<% else %>
+  <% verb = "Edit" %>
+<% end %>
+
+<h3>
+  <%= "#{verb} an Artist:" %>
+</h3>
+
+<%= form_for @artist do |f|%>
+  <br />
+  <%= f.label :first_name, "First Name: " %>
+  <%= f.text_field :first_name %>
+  <br />
+  <%= f.label :last_name, "Last Name: " %>
+  <%= f.text_field :last_name %>
+  <br />
+  <%= f.label :alias, "Alias (optional): " %>
+  <%= f.text_field :alias %>
+  <br />
+  <%= f.submit "#{verb} Artist" %>
+<% end %>

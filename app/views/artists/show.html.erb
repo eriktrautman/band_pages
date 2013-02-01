@@ -1,0 +1,28 @@
+<%= render "shared/nav_links" %>
+
+<h1>
+  <%="Welcome to #{@artist_name}'s Artist Page"%>
+</h1>
+<hr />
+
+
+<%= render "action_links" %>
+
+<h3>Vital Stats:</h3>
+<h4>
+  <% if @artist.band.nil? %>
+    <%= ">> Currently not with a band" %>
+    <% else %>
+      <%= ">> Currently recording with " %>
+      <%= link_to @artist.band.name, @artist.band %>
+  <% end %>
+</h4>
+<h4>
+  <%= ">> Has written #{@artist.authored_songs.count} songs" %>
+</h4>
+<h4>
+  <%= ">> Has recorded #{@artist.performed_songs.count} tracks" %>
+</h4>
+
+<%= render "songs_written" unless @artist.authored_songs.size == 0 %>
+<%= render "tracks_recorded" unless @artist.performed_songs.size == 0 %>

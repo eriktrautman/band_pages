@@ -1,6 +1,16 @@
 class Artist < ActiveRecord::Base
+	[	:first_name,
+		:last_name,
+		:alias,
+		:band_id	].each { |field| attr_accessible field }
 
-	attr_accessible :name, :band_id
+	[	:first_name,
+		:last_name ].each { |field| validates field, :presence => true }
+
+	[ :first_name,
+		:last_name ].each { |field| validates field, :length => (3..15) }
+
+	before_validation :nil_if_blank
 
 	belongs_to :band
 	has_many :authored_songs, :foreign_key => :author_id, :class_name => "Song"
@@ -15,6 +25,11 @@ class Artist < ActiveRecord::Base
 			authored_songs[artist] = artist.authored_songs
 		end
 		authored_songs
+	end
+
+	def nil_if_blank
+		self.alias = nil if self.alias.blank?
+		true
 	end
 
 end

@@ -1,0 +1,9 @@
+<hr />
+<h3>Songs Written:</h3>
+<ul>
+  <% @artist.authored_songs.each do |song| %>
+    <li>
+      <%= link_to song.name, song %>
+    </li>
+  <% end %>
+</ul>

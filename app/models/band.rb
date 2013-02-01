@@ -1,6 +1,7 @@
 class Band < ActiveRecord::Base
 
 	attr_accessible :name
+	validates :name, :presence => true, :uniqueness => true
 
 	has_many :artists
 	has_many :recordings
@@ -13,6 +14,10 @@ class Band < ActiveRecord::Base
 			.joins(:songs)
 			.group("bands.id")
 			.having("COUNT(DISTINCT(recordings.song_id)) < COUNT(recordings.song_id)")
+	end
+
+	def num_distinct_recordings
+		self.songs.uniq.count
 	end
 
 end
