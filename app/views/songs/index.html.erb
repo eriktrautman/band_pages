@@ -1,0 +1,12 @@
+<h1>Welcome to the Songs page!</h1>
+
+<h4>Create a new Song page <%= link_to "HERE", new_song_path %></h4>
+
+<ul>
+  <% @songs.each do |song| %>
+    <li>
+      <%= link_to "#{song.name}", song %>
+      <%= button_to("delete song?", song, :method => :delete, :confirm => "Really???") %>
+    </li>
+  <% end %>
+</ul>

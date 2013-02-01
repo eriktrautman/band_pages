@@ -6,6 +6,7 @@
   <% @bands.each do |band| %>
     <li>
       <%= link_to "#{band.name}", band %>
+      <%= button_to("delete band?", band, :method => :delete, :confirm => "Really???") %>
     </li>
   <% end %>
 </ul>

@@ -7,6 +7,7 @@
     <li>
       <% artist.alias.nil? ? aka = "" : aka = ", aka '#{artist.alias}'" %>
       <%= link_to "#{artist.first_name} #{artist.last_name}#{aka}", artist %>
+      <%= button_to("delete artist?", artist, :method => :delete, :confirm => "Really???") %>
     </li>
   <% end %>
 </ul>

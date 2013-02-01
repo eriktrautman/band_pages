@@ -41,4 +41,16 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def destroy
+    @artist = Artist.find(params[:id])
+    del_name = @artist.first_name
+    if @artist.destroy
+      redirect_to artists_path, :notice => "#{del_name} was successfully deleted"
+    else
+      flash[:error] = @artist.errors.full_messages.to_sentence
+      redirect_to artists_path
+    end
+  end
+
+
 end
